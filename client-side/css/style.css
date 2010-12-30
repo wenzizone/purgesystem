@@ -1,0 +1,169 @@
+body {
+	font-family: Arial;
+	font-size: 14px;
+	color: #4d4b4c;
+	background: #fff url("../images/bkg.gif") repeat-x;
+}
+
+body,table,textarea {
+	font-family: '', Helvetica, sans-serif;
+	font-size: 14px;
+}
+
+table {
+	-webkit-border-horizontal-spacing: 0;
+	-webkit-border-vertical-spacing: 0;
+	border-collapse: collapse;
+}
+
+fieldset,img {
+	border-bottom-width: 0;
+	border-color: initial;
+	border-left-width: 0;
+	border-right-width: 0;
+	border-style: initial;
+	border-top-width: 0;
+}
+
+address,caption,cite,code,dfn,em,strong,th,var {
+	font-style: normal;
+}
+
+ul,ol,li,dl,dt,dd {
+	list-style-image: initial;
+	list-style-position: initial;
+	list-style-type: none;
+}
+
+caption,th {
+	text-align: left;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-size: 100%;
+}
+
+blockquote {
+	quotes: none;
+}
+
+q::before,q::after {
+	content: '';
+}
+
+abbr,acronym {
+	border-bottom-width: 0;
+	border-color: initial;
+	border-left-width: 0;
+	border-right-width: 0;
+	border-style: initial;
+	border-top-width: 0;
+	font-variant: normal;
+}
+
+sup {
+	vertical-align: text-top;
+}
+
+sub {
+	vertical-align: text-bottom;
+}
+
+select,input {
+	vertical-align: middle;
+}
+
+.hd {
+	clear: both;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	width: 1000px;
+	height: 97px;
+}
+
+.bd {
+	clear: both;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	padding-bottom: 30px;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 0;
+	width: 960px;
+}
+
+.bd .nav {
+	float: left;
+	font-weight: bold;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 7px;
+}
+
+.bd .nav span {
+	color: #CCCCCC;
+	font-family: Arial, Helvetica, sans-serif;
+	padding-bottom: 0;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 0;
+}
+
+.bd .uploadBox {
+	padding-bottom: 20px;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 20px;
+	line-height: 140%;
+}
+
+.bd .content {
+	margin-bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	background-attachment: initial;
+	background-clip: initial;
+	background-color: #FFFFFF;
+	background-image: initial;
+	background-origin: initial;
+	background-position: initial initial;
+	background-repeat: initial initial;
+}
+
+.bd .upTable {
+	width: 600px;
+}
+
+.bd .upTable td {
+	padding-bottom: 5px;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 5px;
+}
+
+.ft {
+	padding-bottom: 5px;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 5px;
+}
+
+.ft p {
+	padding-top: 5px;
+	text-align: center;
+}
+
+.ft a {
+	text-decoration: none;
+	color: black;
+}
