@@ -69,10 +69,9 @@ function purge_remote_cache($squid_host, $squid_port, $keyword) {
 	} else {
 		$content = "$keyword\n";
 		fwrite($fp, $content);
-		$result = fgets($fp) . "<br/>";
 		fclose($fp);
+		return(TRUE);
 	}
-	return($result);
 }
 
 # 输出清除缓存的结果
