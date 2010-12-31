@@ -1,9 +1,9 @@
 <?php
 
 /*
- File Name: Purge Cache
- Description: Purge Cache是一个可以通过web方式清除squid,nginx缓存的应用，使用php编写。
- Version: 1.2.3
+ File Name: purge_system
+ Description: purge是一个分布式清除squid,nginx缓存的应用，使用php编写。
+ Version: 2.0
  Author: 蚊子
  Author URI: http://www.wenzizone.cn
  Disclaimer: Use at your own risk. No warranty expressed or implied is provided.
