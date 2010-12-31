@@ -28,6 +28,7 @@ sub search {
         chomp;
         purge_cache($_) if(/$grp_file/i and /^http/);
     }
+    close(FH);
 }
 
 # 清除缓存
