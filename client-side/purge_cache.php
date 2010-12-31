@@ -186,11 +186,10 @@ http://www.wenzizone.cn/js/，这将清除这个url下的所有文件</p>
 		}else{
 			print "$show_message<br/>";
 		}
-			}
-			?></td>
+		?></td>
 	</tr>
 </table>
 </div>
 </div>
 </div>
-			<?php require('./footer.php'); ?>
+		<?php require('./footer.php'); ?>
