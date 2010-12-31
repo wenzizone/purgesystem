@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
-<title>清除缓存系统-by wenzizone.cn</title>
+<title>分布式缓存清除系统-by wenzizone.cn</title>
 
 </head>
 
