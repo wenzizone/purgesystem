@@ -22,11 +22,21 @@ sub wanted {
 # 打开每一个缓存文件,查找匹配项,进行清除
 sub search {
     my $filename = shift;
+    my $dest_url;
     open(FH, "strings $filename |");
 
     while (<FH>) {
         chomp;
-        purge_cache($_) if(/$grp_file/i and /^http/);
+        if (/^http/ or /^KEY/) {
+            if (/$grp_file/i and /^http/) {
+                $dest_url = $_;
+            } elsif (/$grp_file/i and /^KEY/) {
+                my ($tmp_url) = /^KEY: (\S+)/;
+                $dest_url = "http://" . $tmp_url;
+            }
+            purge_cache($dest_url) if($dest_url);
+            last;
+        }
     }
     close(FH);
 }
