@@ -151,7 +151,7 @@ if ($_POST['url']) {
 每行只允许写一个关键字或目录<br />
 例如：swf$，这将清理缓存中所有以swf结尾的url<br />
 http://www.wenzizone.cn/js/，这将清除这个url下的所有文件</p>
-<p><font color='red'>注意：普通模式支持squid，nginx清除缓存，高级模式目前支持squid.</font></p>
+<p><font color='red'>注意：当前版本的高级模式已经完全支持squid及nginx了</font></p>
 <table class="upTable" border="0" align="center" cellpadding="0"
 	cellspacing="0">
 	<tr>
