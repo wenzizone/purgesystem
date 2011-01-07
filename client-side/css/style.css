@@ -85,6 +85,15 @@ select,input {
 	height: 97px;
 }
 
+.hd .title {
+	font-size: 40px;
+	height:	97px;
+	line-height: 97px;
+	vertical-align: middle;
+	text-align: center;
+	color: white;
+}
+
 .bd {
 	clear: both;
 	margin-bottom: 0;
