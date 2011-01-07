@@ -2,43 +2,36 @@
 
 use POSIX;
 use IO::Socket;
-use File::Find;
 use Net::HTTP;
 
-# 网络socket相关
+#################################
+#  定义网络socket相关常量
+#################################
 our $QUEUE_SIZE = 5;
-our $LOCAL_PORT = 9999;
+our $LOCAL_PORT = 9999;     #定义监听端口号
 our $TIME_OUT = 5;
 
-# 清除缓存相关
-our @src_file_dir = ("/usr/local/squid/cache");
-our $grp_file ="";
+#################################
+#  定义缓存清除全局变量
+#################################
+our $src_file_dir = "/usr/local/squid/cache";       # 定义缓存存放路径
 
-# 查找缓存路径下的所有cache文件
-sub wanted {
-    !-d && search($File::Find::name);
-}
 
-# 打开每一个缓存文件,查找匹配项,进行清除
-sub search {
-    my $filename = shift;
-    my $dest_url;
-    open(FH, "strings $filename |");
+#################################
+#  功能性子程序部分
+#################################
 
-    while (<FH>) {
+# 获得url，并调用清除缓存主程序
+sub get_url {
+    $grp_file = shift;
+    my $cmd = "grep -r -a http $src_file_dir | strings|grep \"$grp_file\" |egrep \"(KEY|^http)\"";          # 定义linux的grep命令串
+    my @url = `$cmd`;      # 将grep查找到的url放入数组 
+    
+    foreach (@url) {
         chomp;
-        if (/^http/ or /^KEY/) {
-            if (/$grp_file/i and /^http/) {
-                $dest_url = $_;
-            } elsif (/$grp_file/i and /^KEY/) {
-                my ($tmp_url) = /^KEY: (\S+)/;
-                $dest_url = "http://" . $tmp_url;
-            }
-            purge_cache($dest_url) if($dest_url);
-            last;
-        }
-    }
-    close(FH);
+        my ($url) = /(http:\/\/.*)/;
+        purge_cache($url);
+    }   
 }
 
 # 清除缓存
@@ -50,7 +43,7 @@ sub purge_cache {
     print $url,":",$code,"\n";
 }
 
-# 清除缓存子线程
+# 清除缓存子线程，接受网络发送请求，调用get_url方法
 sub process_purge_cache {
     my $sock = shift;
     while(<$sock>) {
@@ -58,14 +51,16 @@ sub process_purge_cache {
             last;
         } else {
             chomp;
-            $grp_file = $_;
-            find(\&wanted, @src_file_dir);
+            get_url($_);
         }
     }
 }
 
-# Main
+#################################
+#  程序主体部分
+#################################
 
+# 是否开启debug模式
 my $debug = 0;
 foreach (@ARGV) {
     if($_ eq "-d") {
@@ -73,7 +68,7 @@ foreach (@ARGV) {
     }
 }
 
-# Go to Daemon
+# 启动daemon模式
 if(!$debug) {
     my $child = fork;
     die "can't fork: $!\n" unless defined($child);
@@ -93,9 +88,10 @@ if(!$debug) {
     umask(0);
 }
 
+# 启动监听端口
 my $sock = IO::Socket::INET->new(Listen => $QUEUE_SIZE, LocalPort => $LOCAL_PORT, Timeout => $TIME_OUT, Reuse => 1) or die("can't create listen $LOCAL_PORT");
 
-# Accept loop
+# 通过循环接受网络请求
 while(1) {
     next unless my $session = $sock->accept;
     defined(my $pid = fork) or die "Can't fork";
