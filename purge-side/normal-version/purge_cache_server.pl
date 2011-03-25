@@ -35,7 +35,7 @@ sub search {
                 $dest_url = $_;
             } elsif (/$grp_file/i and /^KEY/) {
                 my ($tmp_url) = /^KEY: (\S+)/;
-                $dest_url = "http://" . $tmp_url;
+                $dest_url = $tmp_url;
             }
             purge_cache($dest_url) if($dest_url);
             last;
