@@ -11,7 +11,7 @@ Client端：php
 高级模式
 在高级模式下，SA可以任意输入想要清除的内容，比如：swf，jpg，http://www.wenzizone.cn/images/，/upload/， client端会把这些内容通过服务器端的9999端口推送给选定的cache组进行批量清除。此模式下暂时还不支持返回结果，而且目前只能支持squid缓存的批量清除。
 三、系统架构图
-
+![alt tag](http://pic.yupoo.com/wenzizone/AJNYTtFT/medium.jpg)
 
 四、平台截图
   
